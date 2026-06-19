@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Royal Nails & Beauty - elegantes Nagel- und Beautystudio in Böblingen." />
+  <title>Royal Nails & Beauty | Nagelstudio in Böblingen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #c8a45d;
+      --gold-deep: #8a6a35;
+      --cream: #f6efe4;
+      --ivory: #fffaf2;
+      --white: #ffffff;
+      --ink: #2b241b;
+      --muted: #766b5d;
+      --sage: #6f7c69;
+      --line: rgba(138, 106, 53, 0.2);
+      --shadow: 0 24px 70px rgba(43, 36, 27, 0.12);
+      --soft-shadow: 0 14px 36px rgba(43, 36, 27, 0.1);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(200, 164, 93, 0.07) 1px, transparent 1px) 0 0 / 84px 84px,
+        linear-gradient(180deg, var(--ivory) 0%, var(--cream) 42%, #fff 100%);
+      font-family: "Montserrat", Arial, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      background: rgba(255, 250, 242, 0.82);
+      backdrop-filter: blur(18px);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      border-color: var(--line);
+      background: rgba(255, 250, 242, 0.95);
+      box-shadow: 0 12px 36px rgba(43, 36, 27, 0.08);
+    }
+
+    .nav-wrap {
+      width: min(calc(100% - 32px), var(--max));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(200, 164, 93, 0.48);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(138, 106, 53, 0.18);
+    }
+
+    .brand-name {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.18rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .brand-place {
+      display: block;
+      margin-top: 2px;
+      color: var(--gold-deep);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: #4a4034;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--gold-deep);
+      background: rgba(200, 164, 93, 0.12);
+      outline: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      cursor: pointer;
+      place-items: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      content: "";
+    }
+
+    .menu-toggle span::before {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span::after {
+      transform: translateY(4px);
+    }
+
+    .menu-open .menu-toggle span {
+      transform: rotate(45deg);
+    }
+
+    .menu-open .menu-toggle span::before {
+      transform: translateY(0) rotate(90deg);
+    }
+
+    .menu-open .menu-toggle span::after {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+
+    .section {
+      position: relative;
+      padding: 104px 0;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--gold-deep);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+    }
+
+    h2 {
+      color: #30271d;
+      font-size: clamp(2.35rem, 5vw, 4.6rem);
+    }
+
+    h3 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.9vw, 1.18rem);
+    }
+
+    .hero {
+      min-height: 0;
+      padding: clamp(38px, 4vw, 48px) 0 56px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      pointer-events: none;
+      content: "";
+    }
+
+    .hero::before {
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(200, 164, 93, 0.24), transparent 28%),
+        radial-gradient(circle at 88% 4%, rgba(111, 124, 105, 0.16), transparent 22%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(246, 239, 228, 0.5));
+    }
+
+    .hero::after {
+      width: 54vw;
+      height: 54vw;
+      max-width: 760px;
+      max-height: 760px;
+      right: -22vw;
+      bottom: -24vw;
+      border: 1px solid rgba(200, 164, 93, 0.22);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 24px rgba(255, 255, 255, 0.26);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+      align-items: center;
+      gap: clamp(34px, 6vw, 76px);
+    }
+
+    .hero-copy {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-logo {
+      width: clamp(78px, 12vw, 128px);
+      height: clamp(78px, 12vw, 128px);
+      margin-bottom: 28px;
+      border: 1px solid rgba(200, 164, 93, 0.48);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 18px 44px rgba(138, 106, 53, 0.18);
+    }
+
+    .hero-subtitle {
+      margin-top: 24px;
+      color: #5f5245;
+      font-size: clamp(1.06rem, 2vw, 1.36rem);
+      font-weight: 500;
+    }
+
+    .hero-actions,
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+      box-shadow: 0 16px 34px rgba(138, 106, 53, 0.28);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 20px 42px rgba(138, 106, 53, 0.34);
+    }
+
+    .btn-secondary {
+      color: var(--gold-deep);
+      border-color: rgba(200, 164, 93, 0.42);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: clamp(500px, 42vw, 560px);
+      animation: fadeIn 1s 0.16s ease both;
+    }
+
+    .portrait-card {
+      position: absolute;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: var(--radius);
+      background: #ddd;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portrait-main {
+      inset: 0 9% 8% 3%;
+    }
+
+    .portrait-small {
+      right: 0;
+      bottom: 0;
+      width: 42%;
+      height: 42%;
+      border: 8px solid var(--ivory);
+      box-shadow: 0 20px 48px rgba(43, 36, 27, 0.16);
+    }
+
+    .gold-badge {
+      position: absolute;
+      left: -18px;
+      bottom: 76px;
+      display: grid;
+      place-items: center;
+      width: 136px;
+      height: 136px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, #8a6a35, #c8a45d);
+      box-shadow: 0 24px 54px rgba(138, 106, 53, 0.3);
+      text-align: center;
+    }
+
+    .gold-badge strong {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+
+    .gold-badge span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(36px, 7vw, 86px);
+    }
+
+    .image-stack {
+      position: relative;
+      min-height: 610px;
+    }
+
+    .image-stack::before {
+      position: absolute;
+      inset: 44px 44px 44px -18px;
+      border: 1px solid rgba(200, 164, 93, 0.42);
+      border-radius: var(--radius);
+      content: "";
+    }
+
+    .image-stack .large {
+      position: absolute;
+      inset: 0 12% 10% 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .image-stack .small {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 45%;
+      aspect-ratio: 0.8;
+      overflow: hidden;
+      border: 8px solid var(--ivory);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .image-stack img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content-block {
+      display: grid;
+      gap: 24px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 10px 26px rgba(43, 36, 27, 0.05);
+      font-weight: 700;
+    }
+
+    .feature-list li::before {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(200, 164, 93, 0.15);
+      content: "";
+    }
+
+    .services {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(246, 239, 228, 0.8)),
+        url("./8.jpg") center / cover fixed;
+    }
+
+    .services::before {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 250, 242, 0.86);
+      content: "";
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+      align-items: end;
+      gap: 26px;
+      margin-bottom: 42px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 228px;
+      padding: 26px;
+      border: 1px solid rgba(200, 164, 93, 0.2);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 18px 50px rgba(43, 36, 27, 0.08);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(200, 164, 93, 0.52);
+      box-shadow: 0 24px 64px rgba(43, 36, 27, 0.12);
+      transform: translateY(-6px);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(200, 164, 93, 0.36);
+      border-radius: 50%;
+      color: var(--gold-deep);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 239, 228, 0.8));
+    }
+
+    .service-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .gallery {
+      background: #fffdf9;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid rgba(200, 164, 93, 0.16);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(246, 239, 228, 0.9), rgba(255, 255, 255, 0.9));
+      box-shadow: 0 16px 42px rgba(43, 36, 27, 0.08);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transition: transform 0.55s ease, filter 0.55s ease;
+    }
+
+    .gallery-item:hover img {
+      filter: saturate(1.05) contrast(1.04);
+      transform: scale(1.06);
+    }
+
+    .gallery-item::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 58%, rgba(43, 36, 27, 0.2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      content: "";
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .contact {
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(43, 36, 27, 0.92), rgba(71, 58, 43, 0.88)),
+        url("./Logo.png") center / cover;
+      color: var(--white);
+    }
+
+    .contact::before {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(43, 36, 27, 0.92), rgba(43, 36, 27, 0.72), rgba(43, 36, 27, 0.9)),
+        linear-gradient(180deg, transparent, rgba(43, 36, 27, 0.28));
+      content: "";
+    }
+
+    .contact h2,
+    .contact .eyebrow,
+    .contact .lead {
+      color: var(--white);
+    }
+
+    .contact .eyebrow::before {
+      background: var(--gold);
+    }
+
+    .contact-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.7fr);
+      gap: clamp(28px, 6vw, 76px);
+      align-items: center;
+    }
+
+    .contact-panel {
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 242, 0.1);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-list .mini-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(200, 164, 93, 0.4);
+      border-radius: 50%;
+      color: var(--gold);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-list strong {
+      display: block;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-list span {
+      display: block;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .site-footer {
+      padding: 34px 0;
+      color: rgba(255, 255, 255, 0.72);
+      background: #211b14;
+    }
+
+    .footer-grid {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .footer-brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 18px;
+      font-size: 0.86rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 50%;
+      color: var(--white);
+      background: linear-gradient(145deg, var(--gold-deep), var(--gold));
+      box-shadow: 0 14px 34px rgba(43, 36, 27, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split,
+      .contact-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 44px 0 50px;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container,
+      .nav-wrap,
+      .footer-grid {
+        width: auto;
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      .nav-wrap {
+        min-height: 72px;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-name {
+        font-size: 1rem;
+      }
+
+      .brand-place {
+        font-size: 0.64rem;
+      }
+
+      .menu-toggle {
+        display: grid;
+        position: fixed;
+        top: 14px;
+        right: 16px;
+        z-index: 120;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 72px 14px auto 14px;
+        display: grid;
+        gap: 4px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 250, 242, 0.98);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.22s ease, transform 0.22s ease;
+      }
+
+      .menu-open .nav-links {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .hero-grid > *,
+      .split > *,
+      .contact-grid > * {
+        min-width: 0;
+      }
+
+      .hero-logo {
+        width: 74px;
+        height: 74px;
+        margin-bottom: 22px;
+      }
+
+      .hero-subtitle {
+        max-width: calc(100vw - 32px);
+        overflow-wrap: break-word;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        display: grid;
+        width: calc(100vw - 32px);
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        width: calc(100vw - 32px);
+        max-width: 100%;
+        min-height: 350px;
+      }
+
+      .portrait-main {
+        inset: 0 0 9% 0;
+      }
+
+      .portrait-small {
+        width: 44%;
+        height: 36%;
+        border-width: 6px;
+      }
+
+      .gold-badge {
+        left: 12px;
+        bottom: 28px;
+        width: 112px;
+        height: 112px;
+      }
+
+      .gold-badge strong {
+        font-size: 1.7rem;
+      }
+
+      .image-stack {
+        min-height: 480px;
+      }
+
+      .feature-list,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .footer-grid,
+      .footer-meta {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .container,
+      .nav-wrap,
+      .footer-grid {
+        width: auto;
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+
+      .menu-toggle {
+        right: 12px;
+      }
+
+      .hero-actions,
+      .contact-actions,
+      .hero-visual,
+      .hero-subtitle {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+      }
+
+      h1 {
+        font-size: clamp(2.58rem, 14vw, 3.55rem);
+      }
+
+      h2 {
+        font-size: clamp(2rem, 11vw, 2.72rem);
+      }
+
+      .hero-visual,
+      .image-stack {
+        min-height: 330px;
+      }
+
+      .service-card,
+      .contact-panel {
+        padding: 22px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .back-to-top {
+        right: 14px;
+        bottom: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav-wrap" aria-label="Hauptnavigation">
+      <a class="brand" href="#startseite" aria-label="Royal Nails & Beauty Startseite">
+        <img class="brand-mark" src="./Logo.png" alt="Royal Nails & Beauty Logo" />
+        <span>
+          <span class="brand-name">Royal Nails & Beauty</span>
+          <span class="brand-place">Böblingen</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-menu">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav-links" id="primary-menu">
+        <li><a href="#startseite">Startseite</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="startseite">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <img class="hero-logo" src="./Logo.png" alt="Royal Nails & Beauty Logo" fetchpriority="high" />
+          <p class="eyebrow">Luxury Nail Studio</p>
+          <h1>Royal Nails & Beauty</h1>
+          <p class="hero-subtitle">Elegante Nägel, Schönheit und Wohlbefinden in Böblingen</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+4915124421948" aria-label="Royal Nails & Beauty anrufen">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg>
+              Jetzt anrufen
+            </a>
+            <a class="btn btn-secondary" href="https://www.instagram.com/royal.nailsandbeauty/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+              Auf Instagram ansehen
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="portrait-card portrait-main">
+            <img src="./Logo.png" alt="" fetchpriority="high" />
+          </div>
+          <div class="portrait-card portrait-small">
+            <img src="./9.jpg" alt="" />
+          </div>
+          <div class="gold-badge">
+            <div>
+              <strong>RN</strong>
+              <span>Elegant Beauty</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="ueber-uns">
+      <div class="container split">
+        <div class="image-stack reveal">
+          <div class="large"><img src="./6.jpg" alt="Elegantes Nageldesign in Gold- und Cremetönen" loading="lazy" decoding="async" /></div>
+          <div class="small"><img src="./10.jpg" alt="Feines Nail Art Detail" loading="lazy" decoding="async" /></div>
+        </div>
+
+        <div class="content-block reveal">
+          <div>
+            <p class="eyebrow">Über uns</p>
+            <h2>Moderne Pflege mit ruhiger Eleganz.</h2>
+          </div>
+          <p class="lead">Royal Nails & Beauty ist ein modernes Nagel- und Beautystudio in Böblingen. Wir verbinden hochwertige Pflege, elegantes Design und eine entspannte Atmosphäre.</p>
+          <p class="lead">Unser Ziel ist es, jeder Kundin ein schönes, gepflegtes und selbstbewusstes Gefühl zu geben.</p>
+          <ul class="feature-list" aria-label="Unsere Stärken">
+            <li>Professionelle Beratung</li>
+            <li>Hochwertige Produkte</li>
+            <li>Saubere & moderne Umgebung</li>
+            <li>Liebe zum Detail</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="leistungen">
+      <div class="container section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Leistungen</p>
+            <h2>Unsere Leistungen</h2>
+          </div>
+          <p class="lead">Unsere Preisliste und detaillierten Leistungen werden bald aktualisiert.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21h10"/><path d="M12 21V8"/><path d="M8 8h8l-1.2-4.2A2.5 2.5 0 0 0 12.4 2h-.8a2.5 2.5 0 0 0-2.4 1.8L8 8Z"/><path d="M9 12h6"/></svg></span>
+            <h3>Maniküre</h3>
+            <p>Gepflegte Hände, saubere Konturen und ein natürlich schönes Finish.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20c5 1 12-1 12-8V5a3 3 0 0 0-6 0v7"/><path d="M12 12c0 4-2 7-6 8"/><path d="M5 12h5"/></svg></span>
+            <h3>Pediküre</h3>
+            <p>Entspannende Pflege für Füße mit einem frischen, gepflegten Ergebnis.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.85 5.15L19 10l-5.15 1.85L12 17l-1.85-5.15L5 10l5.15-1.85L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span>
+            <h3>Nageldesign</h3>
+            <p>Feine Designs von dezent und klassisch bis glamourös und ausdrucksstark.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19 19 4"/><path d="m14 4 6 6"/><path d="M5 14h5v5H5z"/><path d="M13 11h3"/></svg></span>
+            <h3>Gel & Acryl</h3>
+            <p>Form, Stabilität und Glanz für Nägel, die elegant und haltbar wirken.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7c-4.5 0-8 3.5-8 8 0-4.5-3.5-8-8-8 4.5 0 8-3.5 8-8 0 4.5 3.5 8 8 8Z"/><path d="M19 17c-2 0-3 1-3 3 0-2-1-3-3-3 2 0 3-1 3-3 0 2 1 3 3 3Z"/></svg></span>
+            <h3>Beauty Services</h3>
+            <p>Ausgewählte Beauty-Behandlungen für einen rundum gepflegten Auftritt.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="M9 12l2 2 4-5"/></svg></span>
+            <h3>Pflege & Wellness</h3>
+            <p>Ruhige Momente, sanfte Pflege und ein angenehmes Studioerlebnis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="galerie">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Galerie</p>
+            <h2>Inspiration in Gold, Creme und feinen Details.</h2>
+          </div>
+          <p class="lead">Eine Auswahl aktueller Nail Looks und eleganter Stilrichtungen von Royal Nails & Beauty.</p>
+        </div>
+
+        <div class="gallery-grid" aria-label="Bildergalerie">
+          <figure class="gallery-item reveal"><img src="./1.jpg" alt="Braunes und goldenes Nageldesign" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./2.png" alt="Elegantes kupferfarbenes Nail Art" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./3.jpg" alt="Goldenes French Nail Design" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./4.jpg" alt="Champagnerfarbene Nägel" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./5.jpg" alt="Warme orange-goldene Nägel" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./6.jpg" alt="Perlmuttfarbene Nägel" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./7.jpg" alt="Braun-goldenes Glitzerdesign" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./8.jpg" alt="Chrom-Nägel in Silber und Gold" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./9.jpg" alt="Cremefarbene Nägel mit Goldspitzen" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./10.jpg" alt="Gelbe und roséfarbene Nail Art" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./11.jpg" alt="Natürliches Nude Nail Design" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./12.jpg" alt="Zartes Nageldesign mit Goldakzenten" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./13.jpg" alt="Elegante helle Nägel" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./14.jpg" alt="Florales Nail Art in Rosé" loading="lazy" decoding="async" /></figure>
+          <figure class="gallery-item reveal"><img src="./15.jpg" alt="Nude Nägel mit Glitzerakzent" loading="lazy" decoding="async" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="kontakt">
+      <div class="container contact-grid">
+        <div class="content-block reveal">
+          <div>
+            <p class="eyebrow">Kontakt</p>
+            <h2>Besuchen Sie uns in Böblingen.</h2>
+          </div>
+          <p class="lead">Für Termine, Fragen oder Inspirationen erreichen Sie Royal Nails & Beauty telefonisch oder über unsere Social-Media-Kanäle.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="tel:+4915124421948">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg>
+              Anrufen
+            </a>
+            <a class="btn btn-secondary" href="https://www.facebook.com/profile.php?id=61590887704457" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="btn btn-secondary" href="https://www.instagram.com/royal.nailsandbeauty/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="btn btn-secondary" href="https://www.tiktok.com/@royal.nailsandbeauty?lang=vi-VN" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Konrad-Zuse-Stra%C3%9Fe%2022%2C%2071034%20B%C3%B6blingen" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Route planen
+            </a>
+          </div>
+        </div>
+
+        <aside class="contact-panel reveal" aria-label="Kontaktdaten">
+          <ul class="contact-list">
+            <li>
+              <span class="mini-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/></svg></span>
+              <span><strong>Studio</strong><span>Royal Nails & Beauty</span></span>
+            </li>
+            <li>
+              <span class="mini-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span><strong>Adresse</strong><span>Konrad-Zuse-Straße 22, 71034 Böblingen</span></span>
+            </li>
+            <li>
+              <span class="mini-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg></span>
+              <span><strong>Telefon</strong><span>+49 151 24421948</span></span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./Logo.png" alt="Royal Nails & Beauty Logo" loading="lazy" decoding="async" />
+        <span>Royal Nails & Beauty</span>
+      </div>
+      <div class="footer-meta">
+        <span>© 2026 Alle Rechte vorbehalten</span>
+        <span>Design: Hoangcaster</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#startseite" aria-label="Zurück nach oben">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  </a>
+
+  <script>
+    const body = document.body;
+    const header = document.querySelector(".site-header");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const backToTop = document.querySelector(".back-to-top");
+
+    function updateHeaderState() {
+      const isScrolled = window.scrollY > 18;
+      header.classList.toggle("scrolled", isScrolled);
+      backToTop.classList.toggle("visible", window.scrollY > 520);
+    }
+
+    function closeMenu() {
+      body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Menü öffnen");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = body.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Menü schließen" : "Menü öffnen");
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    updateHeaderState();
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element, index) => {
+      element.style.transitionDelay = `${Math.min(index % 6, 4) * 70}ms`;
+      revealObserver.observe(element);
+    });
+  </script>
+</body>
+</html>
