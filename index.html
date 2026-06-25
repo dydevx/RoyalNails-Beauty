@@ -489,7 +489,6 @@
       animation: fadeUp 0.9s ease both;
     }
 
-    .hero-logo,
     .hero-copy .eyebrow,
     .hero-copy h1,
     .hero-subtitle,
@@ -497,10 +496,6 @@
       opacity: 0;
       transform: translateY(24px);
       animation: heroStage 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .hero-logo {
-      animation-delay: 0.36s;
     }
 
     .hero-copy .eyebrow {
@@ -517,16 +512,6 @@
 
     .hero-actions {
       animation-delay: 0.94s;
-    }
-
-    .hero-logo {
-      width: clamp(78px, 12vw, 128px);
-      height: clamp(78px, 12vw, 128px);
-      margin-bottom: 28px;
-      border: 1px solid rgba(200, 164, 93, 0.48);
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 18px 44px rgba(138, 106, 53, 0.18);
     }
 
     .hero-subtitle {
@@ -909,16 +894,21 @@
     .menu-board {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      align-items: start;
+      gap: 24px;
     }
 
     .price-section {
       position: relative;
-      padding: 26px;
-      border: 1px solid rgba(200, 164, 93, 0.24);
+      padding: clamp(24px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.72);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.84);
-      box-shadow: 0 18px 50px rgba(43, 36, 27, 0.08);
+      background:
+        radial-gradient(circle at 16% 0%, rgba(200, 164, 93, 0.18), transparent 28%),
+        linear-gradient(142deg, rgba(255, 255, 255, 0.96), rgba(255, 250, 242, 0.82) 58%, rgba(246, 239, 228, 0.92));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.74),
+        0 18px 44px rgba(43, 36, 27, 0.08);
       overflow: hidden;
       transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.32s ease, box-shadow 0.32s ease;
     }
@@ -928,8 +918,10 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(135deg, rgba(200, 164, 93, 0.14), transparent 46%),
-        linear-gradient(315deg, rgba(111, 124, 105, 0.08), transparent 42%);
+        linear-gradient(90deg, rgba(138, 106, 53, 0.24), transparent 18%, transparent 82%, rgba(111, 124, 105, 0.14)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 36%),
+        repeating-linear-gradient(90deg, transparent 0 58px, rgba(138, 106, 53, 0.045) 58px 59px, transparent 59px 118px);
+      opacity: 0.85;
       content: "";
     }
 
@@ -946,8 +938,10 @@
     }
 
     .price-section:hover {
-      border-color: rgba(200, 164, 93, 0.42);
-      box-shadow: 0 24px 66px rgba(43, 36, 27, 0.12);
+      border-color: rgba(200, 164, 93, 0.54);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.82),
+        0 26px 70px rgba(43, 36, 27, 0.13);
       transform: translateY(-5px);
     }
 
@@ -962,39 +956,104 @@
     }
 
     .price-section h3 {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(138, 106, 53, 0.16);
       color: #241d15;
-      font-size: clamp(1.55rem, 2.8vw, 2.05rem);
+      font-size: clamp(2rem, 3.2vw, 2.65rem);
+      line-height: 0.95;
       text-transform: uppercase;
+    }
+
+    .price-section h3::after {
+      flex: 0 0 auto;
+      color: rgba(138, 106, 53, 0.72);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      line-height: 1;
+    }
+
+    .price-section:nth-child(1) h3::after {
+      content: "NAILS";
+    }
+
+    .price-section:nth-child(2) h3::after {
+      content: "BEAUTY";
     }
 
     .menu-kicker {
       display: inline-flex;
-      margin-top: 18px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      color: #241d15;
-      background: rgba(200, 164, 93, 0.26);
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 6px 10px 6px 0;
+      border-bottom: 1px solid rgba(138, 106, 53, 0.24);
+      color: var(--gold-deep);
+      background: linear-gradient(90deg, rgba(200, 164, 93, 0.16), transparent 74%);
       font-size: 0.76rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+    }
+
+    .menu-kicker::before {
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(138, 106, 53, 0.42);
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(200, 164, 93, 0.13);
+      content: "";
     }
 
     .price-list {
       display: grid;
-      gap: 10px;
-      margin: 18px 0 0;
+      gap: 7px;
+      margin: 16px 0 0;
       padding: 0;
       list-style: none;
     }
 
     .price-list li {
+      position: relative;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: baseline;
       gap: 12px;
+      min-height: 44px;
+      padding: 9px 10px 9px 0;
+      border-bottom: 1px solid rgba(138, 106, 53, 0.1);
       color: #4a4034;
       font-weight: 600;
+      transition: background 0.24s ease, color 0.24s ease, padding-left 0.24s ease, border-color 0.24s ease;
+    }
+
+    .price-list li::before {
+      position: absolute;
+      inset: 5px auto 5px 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--gold), rgba(111, 124, 105, 0.58));
+      opacity: 0;
+      transform: scaleY(0.35);
+      transform-origin: center;
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      content: "";
+    }
+
+    .price-list li:hover {
+      padding-left: 14px;
+      border-color: rgba(138, 106, 53, 0.18);
+      color: #2f281f;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .price-list li:hover::before {
+      opacity: 1;
+      transform: scaleY(1);
     }
 
     .reveal.visible .price-list li,
@@ -1007,22 +1066,39 @@
     .price-list .item-name {
       display: flex;
       min-width: 0;
-      gap: 10px;
+      align-items: baseline;
+      gap: 12px;
       overflow-wrap: anywhere;
     }
 
     .price-list .item-name::after {
       min-width: 24px;
       flex: 1;
-      border-bottom: 1px dotted rgba(138, 106, 53, 0.44);
+      border-bottom: 1px solid rgba(138, 106, 53, 0.2);
       transform: translateY(-5px);
       content: "";
     }
 
     .price-list strong {
+      min-width: 76px;
+      padding: 4px 9px;
+      border: 1px solid rgba(138, 106, 53, 0.13);
+      border-radius: 999px;
       color: #241d15;
-      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      font-size: 1.02rem;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      text-align: center;
       white-space: nowrap;
+      transition: border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
+    }
+
+    .price-list li:hover strong {
+      border-color: rgba(138, 106, 53, 0.26);
+      color: var(--gold-deep);
+      background: var(--white);
     }
 
     .menu-contact-strip {
@@ -1030,25 +1106,33 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      padding: 20px 22px;
-      border: 1px solid rgba(200, 164, 93, 0.26);
+      margin-top: 2px;
+      padding: 18px;
+      border: 1px solid rgba(138, 106, 53, 0.2);
       border-radius: var(--radius);
-      background: rgba(255, 250, 242, 0.9);
-      box-shadow: 0 14px 36px rgba(43, 36, 27, 0.08);
-      background-image: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+      background:
+        linear-gradient(135deg, rgba(43, 36, 27, 0.92), rgba(76, 62, 43, 0.9)),
+        linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.22), transparent);
       background-size: 220% 100%;
+      box-shadow: 0 16px 40px rgba(43, 36, 27, 0.12);
       animation: stripSheen 6s ease-in-out infinite;
     }
 
     .menu-contact-strip span {
       display: grid;
       gap: 2px;
-      color: #4a4034;
+      padding: 0 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 250, 242, 0.92);
       font-weight: 700;
     }
 
+    .menu-contact-strip span:first-child {
+      border-left: 0;
+    }
+
     .menu-contact-strip strong {
-      color: var(--gold-deep);
+      color: #f1dca9;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -1818,12 +1902,6 @@
         min-width: 0;
       }
 
-      .hero-logo {
-        width: 74px;
-        height: 74px;
-        margin-bottom: 22px;
-      }
-
       .hero-subtitle {
         display: grid;
         gap: 2px;
@@ -1881,6 +1959,41 @@
       .service-grid,
       .menu-contact-strip {
         grid-template-columns: 1fr;
+      }
+
+      .price-section {
+        padding: 24px;
+      }
+
+      .price-section h3 {
+        font-size: clamp(1.85rem, 9vw, 2.4rem);
+      }
+
+      .price-section h3::after {
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+      }
+
+      .price-list li {
+        gap: 8px;
+        padding-right: 0;
+      }
+
+      .price-list strong {
+        min-width: 70px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .menu-contact-strip span {
+        padding: 10px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        border-left: 0;
+      }
+
+      .menu-contact-strip span:first-child {
+        padding-top: 0;
+        border-top: 0;
       }
 
       .gallery-grid {
@@ -2008,14 +2121,13 @@
       </div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <img class="hero-logo" src="./Logo.png" alt="Royal Nails & Beauty Logo" fetchpriority="high" />
           <p class="eyebrow">Luxury Nail Studio</p>
           <h1><span>Royal Nails & Beauty</span></h1>
           <p class="hero-subtitle"><span>Nails • Head Spa • Beauty</span><span>Schönheit beginnt mit Wohlfühlen</span></p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+4915124421948" aria-label="Royal Nails & Beauty anrufen">
+            <a class="btn btn-primary" href="https://wa.me/4915124421948" target="_blank" rel="noopener noreferrer" aria-label="Royal Nails & Beauty auf WhatsApp schreiben">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg>
-              Jetzt anrufen
+              WhatsApp schreiben
             </a>
             <a class="btn btn-secondary" href="https://www.instagram.com/royal.nailsandbeauty/" target="_blank" rel="noopener noreferrer">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
@@ -2142,7 +2254,7 @@
 
           <div class="menu-contact-strip reveal" aria-label="Termin Kontakt">
             <span><strong>WhatsApp</strong>+49 1512 4421948</span>
-            <span><strong>Telefon</strong>07031 / 3091-350</span>
+            <span><strong>Telefon</strong>+49 7031 3091-350</span>
             <span><strong>Hinweis</strong>Auch ohne Termin möglich</span>
           </div>
         </div>
@@ -2188,9 +2300,9 @@
           </div>
           <p class="lead">Für Termine, Fragen oder Inspirationen erreichen Sie Royal Nails & Beauty telefonisch, per WhatsApp oder über unsere Social-Media-Kanäle. Auch ohne Termin möglich.</p>
           <div class="contact-actions">
-            <a class="btn btn-primary" href="tel:+4915124421948">
+            <a class="btn btn-primary" href="https://wa.me/4915124421948" target="_blank" rel="noopener noreferrer">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg>
-              WhatsApp anrufen
+              WhatsApp schreiben
             </a>
             <a class="btn btn-secondary" href="tel:+4970313091350">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.6a2 2 0 0 1-.45 2.11L8.02 9.7a16 16 0 0 0 6.28 6.28l1.27-1.27a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0 1 22 16.92Z"/></svg>
